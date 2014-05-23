@@ -1,0 +1,7 @@
+E:\Freelance\Prisma Sarana Jaya Utama\ItemStock\ItemStock.Api.Client\bin\Debug\ItemStock.Api.Client.dll
+E:\Freelance\Prisma Sarana Jaya Utama\ItemStock\ItemStock.Api.Client\bin\Debug\ItemStock.Api.Client.pdb
+E:\Freelance\Prisma Sarana Jaya Utama\ItemStock\ItemStock.Api.Client\bin\Debug\System.Net.Http.Formatting.dll
+E:\Freelance\Prisma Sarana Jaya Utama\ItemStock\ItemStock.Api.Client\bin\Debug\System.Net.Http.Formatting.xml
+E:\Freelance\Prisma Sarana Jaya Utama\ItemStock\ItemStock.Api.Client\obj\Debug\ItemStock.Api.Client.dll
+E:\Freelance\Prisma Sarana Jaya Utama\ItemStock\ItemStock.Api.Client\obj\Debug\ItemStock.Api.Client.pdb
+E:\Freelance\Prisma Sarana Jaya Utama\ItemStock\ItemStock.Api.Client\obj\Debug\ItemStock.Api.Client.csprojResolveAssemblyReference.cache

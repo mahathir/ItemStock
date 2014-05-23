@@ -1,0 +1,5 @@
+E:\Freelance\Prisma Sarana Jaya Utama\ItemStock\ItemStock.DTO\bin\Debug\ItemStock.DTO.dll
+E:\Freelance\Prisma Sarana Jaya Utama\ItemStock\ItemStock.DTO\bin\Debug\ItemStock.DTO.pdb
+E:\Freelance\Prisma Sarana Jaya Utama\ItemStock\ItemStock.DTO\obj\Debug\ItemStock.DTO.dll
+E:\Freelance\Prisma Sarana Jaya Utama\ItemStock\ItemStock.DTO\obj\Debug\ItemStock.DTO.pdb
+E:\Freelance\Prisma Sarana Jaya Utama\ItemStock\ItemStock.DTO\obj\Debug\ItemStock.DTO.csprojResolveAssemblyReference.cache
