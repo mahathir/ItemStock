@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Web.Http;
 using ItemStock.Api.DI;
+using ItemStock.Persistence;
 using ItemStock.Repository;
 using ItemStock.Repository.Implementation;
 using ItemStock.Repository.Interface;

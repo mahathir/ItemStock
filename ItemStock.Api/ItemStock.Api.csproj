@@ -153,7 +153,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\DependencyConfig.cs" />
@@ -193,6 +195,10 @@
     <ProjectReference Include="..\ItemStock.DTO\ItemStock.DTO.csproj">
       <Project>{0d5d88f0-ba6a-404d-9762-f5915e4b0118}</Project>
       <Name>ItemStock.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ItemStock.Persistence\ItemStock.Persistence.csproj">
+      <Project>{2537965d-4c04-4b6a-af5c-0ed493fefa45}</Project>
+      <Name>ItemStock.Persistence</Name>
     </ProjectReference>
     <ProjectReference Include="..\ItemStock.Repository\ItemStock.Repository.csproj">
       <Project>{740f6c74-0afc-40ee-b92f-666130b9200c}</Project>

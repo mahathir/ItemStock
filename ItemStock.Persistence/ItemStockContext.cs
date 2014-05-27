@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using ItemStock.DTO.Implementation;
 using ItemStock.DTO.Interface;
 
-namespace ItemStock.Repository
+namespace ItemStock.Persistence
 {
     public class ItemStockContext :DbContext
     {
