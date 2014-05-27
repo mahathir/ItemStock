@@ -19,6 +19,6 @@ namespace ItemStock.Repository.Interface
 
         ICollection<ILocalFile> FindAll();
 
-        ILocalFile FindByName(ILocalFile file);
+        ILocalFile FindByName(string name);
     }
 }

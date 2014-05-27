@@ -10,7 +10,8 @@ using ItemStock.Repository.Interface;
 
 namespace ItemStock.Api.Controllers
 {
-    public class UserController : ApiController, IBaseController<AppUser>
+    [Authorize]
+    public class UserController : BaseApiController, IBaseController<AppUser>
     {
         private IAppUserRepository _userRepository;
 

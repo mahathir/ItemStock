@@ -10,7 +10,8 @@ using ItemStock.Repository.Interface;
 
 namespace ItemStock.Api.Controllers
 {
-    public class GoodController : ApiController, IBaseController<Good>
+    [Authorize]
+    public class GoodController : BaseApiController, IBaseController<Good>
     {
         private IGoodRepository _goodRepository;
 

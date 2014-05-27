@@ -19,6 +19,10 @@ namespace ItemStock.Api
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.SuppressDefaultHostAuthentication();
+            //This will used the HTTP header: "Authorization"      Value: "Bearer 1234123412341234asdfasdfasdfasdf"
+            config.Filters.Add(new HostAuthenticationFilter("Bearer"));
         }
     }
 }

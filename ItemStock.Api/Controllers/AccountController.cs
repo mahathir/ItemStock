@@ -4,63 +4,57 @@ using System.Linq;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Owin.Infrastructure;
 using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity;
 
 namespace ItemStock.Api.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseApiController
     {
-        public ActionResult Login()
+        [HttpPost]
+        [ActionName("Authenticate")]
+        [AllowAnonymous]
+        public String Authenticate(string user, string password)
         {
-            var authentication = HttpContext.GetOwinContext().Authentication;
-            if (Request.HttpMethod == "POST")
+
+            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password))
+                return "failed";
+            var userIdentity = UserManager.FindAsync(user, password).Result;
+            if (userIdentity != null)
             {
-                var isPersistent = !string.IsNullOrEmpty(Request.Form.Get("isPersistent"));
-
-                if (!string.IsNullOrEmpty(Request.Form.Get("submit.Signin")))
-                {
-                    authentication.SignIn(
-                        new AuthenticationProperties { IsPersistent = isPersistent },
-                        new ClaimsIdentity(new[] { new Claim(
-                       ClaimsIdentity.DefaultNameClaimType, Request.Form["username"]) },
-                           "Application"));
-                }
+                var identity = new ClaimsIdentity(Startup.OAuthBearerOptions.AuthenticationType);
+                identity.AddClaim(new Claim(ClaimTypes.Name, user));
+                identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, userIdentity.Id));
+                AuthenticationTicket ticket = new AuthenticationTicket(identity, new AuthenticationProperties());
+                var currentUtc = new SystemClock().UtcNow;
+                ticket.Properties.IssuedUtc = currentUtc;
+                ticket.Properties.ExpiresUtc = currentUtc.Add(TimeSpan.FromMinutes(30));
+                string AccessToken = Startup.OAuthBearerOptions.AccessTokenFormat.Protect(ticket);
+                return AccessToken;
             }
-
-            return View();
+            return "failed";
         }
 
-        public ActionResult Logout()
+        [Authorize]
+        [HttpGet]
+        [ActionName("ValidateToken")]
+        public String ValidateToken()
         {
-            return View();
+            var user = this.User.Identity;
+            if (user != null)
+                return string.Format("{0} - {1}", user.GetUserId(), user.GetUserName());
+            else
+                return "Unable to resolve user id";
+
         }
 
-        public ActionResult External()
+        [Authorize]
+        [HttpGet]
+        [ActionName("GetPrivateData")]
+        public object GetPrivateData()
         {
-            var authentication = HttpContext.GetOwinContext().Authentication;
-            if (Request.HttpMethod == "POST")
-            {
-                foreach (var key in Request.Form.AllKeys)
-                {
-                    if (key.StartsWith("submit.External.") && !string.IsNullOrEmpty(Request.Form.Get(key)))
-                    {
-                        var authType = key.Substring("submit.External.".Length);
-                        authentication.Challenge(authType);
-                        return new HttpUnauthorizedResult();
-                    }
-                }
-            }
-            var identity = authentication.AuthenticateAsync("External").Result.Identity;
-            if (identity != null)
-            {
-                authentication.SignOut("External");
-                authentication.SignIn(
-                    new AuthenticationProperties { IsPersistent = true },
-                    new ClaimsIdentity(identity.Claims, "Application", identity.NameClaimType, identity.RoleClaimType));
-                return Redirect(Request.QueryString["ReturnUrl"]);
-            }
-
-            return View();
+            return new { Message = "Secret information" };
         }
     }
 }
