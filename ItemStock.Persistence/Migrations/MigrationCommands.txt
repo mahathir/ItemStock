@@ -1,1 +1,5 @@
-﻿Update-Database -ConnectionStringName "Migration"
+﻿// Migrate
+Update-Database -ConnectionStringName "Migration"
+
+// Generate script from beginning
+Update-Database -Script -SourceMigration: $InitialDatabase -TargetMigration: AddAppUserEmail
