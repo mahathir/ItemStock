@@ -12,10 +12,7 @@ namespace ItemStock.Api.Identity.UserStore
 {
     public class AppUserIdentity : IdentityUser
     {
-        public string Domain { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string TimezoneOffSetInMinutes { get; set; }
+        public Guid AppUserId { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUserIdentity> manager)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace ItemStock.Api.Controllers
@@ -8,14 +9,14 @@ namespace ItemStock.Api.Controllers
     public interface IBaseController<Entity>
         where Entity : class
     {
-        ICollection<Entity> Get();
+        Task<ICollection<Entity>> Get();
 
-        Entity Get(Guid id);
+        Task<Entity> Get(Guid id);
 
-        void Put(Entity entity);
+        Task Put(Entity entity);
 
-        void Post(Entity entity);
+        Task Post(Entity entity);
 
-        void Delete(Guid id);
+        Task Delete(Guid id);
     }
 }

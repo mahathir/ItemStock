@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using ItemStock.Persistence.Data;
 
 namespace ItemStock.Api.Identity.UserStore
 {
@@ -22,36 +23,29 @@ namespace ItemStock.Api.Identity.UserStore
         {
             var UserManager = new UserManager<AppUserIdentity>(new UserStore<AppUserIdentity>(context));
             var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            string name = "Admin";
-            string password = "123456";
-            string test = "test";
-
-            //Create Role Test and User Test
-            RoleManager.Create(new IdentityRole(test));
-            UserManager.Create(new AppUserIdentity()
-            {
-                UserName = test,
-                Domain = "ITEEDEE",
-                FirstName = "Test User"
-            }, password);
+            string roleName = "Admin"; 
 
             //Create Role Admin if it does not exist
-            if (!RoleManager.RoleExists(name))
+            if (!RoleManager.RoleExists(roleName))
             {
-                var roleresult = RoleManager.Create(new IdentityRole(name));
+                var roleresult = RoleManager.Create(new IdentityRole(roleName));
             }
 
-            //Create User=Admin with password=123456
-            var user = new AppUserIdentity();
-            user.UserName = name;
-            user.Domain = "ITEEDEE";
-            user.FirstName = "Admin User";
-            var adminresult = UserManager.Create(user, password);
-
-            //Add User Admin to Role Admin
-            if (adminresult.Succeeded)
+            //Create User
+            foreach (var u in TestData.AppUsers)
             {
-                var result = UserManager.AddToRole(user.Id, name);
+                var user = new AppUserIdentity()
+                {
+                    UserName = u.Username,
+                    AppUserId = u.Id
+                };
+                var adminresult = UserManager.Create(user, u.Password);
+
+                //Add User Admin to Role Admin
+                if (adminresult.Succeeded)
+                {
+                    var result = UserManager.AddToRole(user.Id, roleName);
+                }
             }
         }
     }
