@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using ItemStock.Api.Identity.UserStore;
 using ItemStock.DTO.Implementation;
 using ItemStock.DTO.Interface;
 using ItemStock.Repository.Interface;
@@ -56,30 +55,11 @@ namespace ItemStock.Api.Controllers
             user.CreatedDateTime = DateTime.Now;
 
             _userRepository.Add(user);
-
-            var userIdentity = new AppUserIdentity()
-            {
-                UserName = user.Username,
-                AppUserId = user.Id
-            };
-            var adminresult = await UserManager.CreateAsync(userIdentity, user.Password);
-
-            //Add User Admin to Role Admin
-            if (adminresult.Succeeded)
-            {
-                var result = await UserManager.AddToRoleAsync(userIdentity.Id, "Admin");
-            }
         }
 
         public async Task Delete(Guid id)
         {
             var entity = _userRepository.Find(id);
-            if (entity != null)
-            {
-                var userIdentity = await UserManager.FindByNameAsync(entity.Username);
-                await UserManager.DeleteAsync((AppUserIdentity)userIdentity);
-                _userRepository.Delete(entity);
-            }
         }
     }
 }

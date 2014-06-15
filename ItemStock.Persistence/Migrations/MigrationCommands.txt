@@ -1,4 +1,10 @@
-﻿// Migrate
+﻿// Enable Migration
+Enable-Migrations
+
+// Add New Migration
+Add-Migration AddBlogUrl
+
+// Migrate
 Update-Database -ConnectionStringName "Migration"
 
 // Generate script from beginning

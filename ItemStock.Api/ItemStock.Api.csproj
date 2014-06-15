@@ -160,10 +160,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\DependencyConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\GoodController.cs" />
     <Compile Include="Controllers\IBaseController.cs" />
@@ -172,13 +170,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Identity\AppUserManager.cs" />
-    <Compile Include="Identity\GoogleSmsService.cs" />
-    <Compile Include="Identity\SignInHelper.cs" />
-    <Compile Include="Identity\UserStore\AppUserIdentity.cs" />
-    <Compile Include="Identity\UserStore\AppUserIdentityDbContextInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
