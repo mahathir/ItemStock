@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
+using System.Web.Helpers;
 using System.Web.Http;
+using Newtonsoft.Json.Serialization;
 
 namespace ItemStock.Api
 {
@@ -9,8 +12,6 @@ namespace ItemStock.Api
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -20,9 +21,8 @@ namespace ItemStock.Api
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.SuppressDefaultHostAuthentication();
-            //This will used the HTTP header: "Authorization"      Value: "Bearer 1234123412341234asdfasdfasdfasdf"
-            config.Filters.Add(new HostAuthenticationFilter("Bearer"));
+            var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
+            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }

@@ -9,7 +9,7 @@ using ItemStock.DTO.Interface;
 
 namespace ItemStock.Persistence
 {
-    public class ItemStockContext :DbContext
+    public class ItemStockContext : DbContext
     {
         public DbSet<Good> Goods { get; set; }
 

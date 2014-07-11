@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 
 namespace ItemStock.Repository.Base
 {
+    /// <summary>
+    /// Base Repository
+    /// </summary>
+    /// <typeparam name="I">Repository Interface</typeparam>
+    /// <typeparam name="C">Repository Class</typeparam>
+    /// <typeparam name="K">Key</typeparam>
     public abstract class BaseRepository<I, C, K>
         where C : class, I
     {

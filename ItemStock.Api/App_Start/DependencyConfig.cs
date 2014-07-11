@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Web.Http;
+using ItemStock.Api.Auth;
 using ItemStock.Api.DI;
 using ItemStock.Persistence;
 using ItemStock.Repository;
@@ -19,7 +20,9 @@ namespace ItemStock.Api
             // 2. Configure the container (register)
             container.Register<IGoodRepository, GoodRepository>();
             container.Register<IAppUserRepository, AppUserRepository>();
+            container.Register<IAuthRepository, AuthRepository>();
             container.Register<DbContext, ItemStockContext>();
+            container.Register<AuthContext, AuthContext>();
 
             // 3. Optionally verify the container's configuration.
             container.Verify();
