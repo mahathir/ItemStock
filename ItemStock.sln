@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemStock.Api.Client", "Ite
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ItemStock.Api", "ItemStock.Api", "{3138D178-EFC0-40C5-A0F3-DD95D122C28A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemStock.Web", "ItemStock.Web\ItemStock.Web.csproj", "{68D1C28A-CB14-45BE-BE84-2E0DA59E5E33}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemStock.Persistence", "ItemStock.Persistence\ItemStock.Persistence.csproj", "{2537965D-4C04-4B6A-AF5C-0ED493FEFA45}"
 EndProject
 Global
@@ -37,10 +35,6 @@ Global
 		{77E832C3-7D43-4D06-9D1F-B47F6F7518EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77E832C3-7D43-4D06-9D1F-B47F6F7518EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77E832C3-7D43-4D06-9D1F-B47F6F7518EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{68D1C28A-CB14-45BE-BE84-2E0DA59E5E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{68D1C28A-CB14-45BE-BE84-2E0DA59E5E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{68D1C28A-CB14-45BE-BE84-2E0DA59E5E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{68D1C28A-CB14-45BE-BE84-2E0DA59E5E33}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2537965D-4C04-4B6A-AF5C-0ED493FEFA45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2537965D-4C04-4B6A-AF5C-0ED493FEFA45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2537965D-4C04-4B6A-AF5C-0ED493FEFA45}.Release|Any CPU.ActiveCfg = Release|Any CPU
