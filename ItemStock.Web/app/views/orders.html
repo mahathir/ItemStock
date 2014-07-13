@@ -1,0 +1,42 @@
+﻿
+<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Good Code</th>
+                    <th>Name</th>
+                    <th>Stock</th>
+                    <th>Buy Price</th>
+                    <th>Minimal Sell Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="order in orders">
+                    <td>
+                        {{ order.Code }}
+                    </td>
+                    <td>
+                        {{ order.Name }}
+                    </td>
+                    <td>
+                        {{ order.Stock }}
+                    </td>
+                    <td>
+                        {{ order.BuyPrice }}
+                    </td>
+                    <td>
+                        {{ order.MinimalSellPrice }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+</div>
